@@ -377,17 +377,26 @@ footer > a.instar:hover{background:url(../images/social_b_instar_hover.png) no-r
     color: #fff;
 }
 
+.book_rollwrap .book_roll
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 
+.book_rollwrap .book_roll ul
+{
+    width: 100%;
+}
 
+.book_rollwrap .book_roll ul li
+{
+    float: left;
+    width: 152px;
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.book_rollwrap .book_roll ul li img
+{
+    width: 100px;
+}
