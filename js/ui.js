@@ -18,5 +18,34 @@ $(document).ready(function(){
 		$(".content").removeClass("prev this next");
 		$("#container").css("max-width", "1200px");
 	});
+	//롤링 배너 왼쪽 버튼 클릭 이벤트
+	$(".roll_left").click(function(){
+		$(".book_roll li").eq(0).insertAfter(".book_roll li:last-child"); 
+		//이동할 요소로 첫 번째 <li> 태그 선택
+		//스크립트에서의 숫자는 0부터 시작. 첫 번째 태그는 0번째로 표기
+		//첫 번째 li태그가 .book_roll 클래스의 li 태그 중 가장 마지막 li 태그 뒤로 이동
+	});
+	//롤링 배너 오른쪽 버튼 클릭 이벤트
+	$(".roll_right").click(function(){
+		$(".book_roll li").eq(-1).insertBefore(".book_roll li:first-child");
+		//가장 마지막 태그가 이동되도록 eq의 메서드 값을 -1로 지정
+	});
+	//ajax로 도서소개 페이지 추가하기
+	$(".book_roll li").click(function(){
+		var _this =$(this);
+		var liurl =_this.data("url");
+		$(".notebook").html();
+		$.ajax({
+			type : 'get', //HTTP 요청 방식
+			url : liurl, //해당 url
+			dataType : 'html', //data 타입
+			success : function(data) { //HTTP 요청 성공 후 데이터 전송
+				$(".notebook").html(data);
+			},
+			error : function(xhr , status , error){
+				alert('ajax error' + error);
+			}
+		});
+	});
 });
 
